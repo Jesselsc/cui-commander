@@ -1,0 +1,3 @@
+# MSTechAlpine Fleet Commander Python dependencies
+# Keep this file explicit so one-click setup can install consistently.
+# Current script uses Python standard library only.

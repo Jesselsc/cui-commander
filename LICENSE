@@ -1,0 +1,103 @@
+MSTechAlpine Fleet Commander
+Copyright (c) 2026 Jesse Edwards / MSTechAlpine Ventures LLC
+All rights reserved.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+POLYFORM NON-COMMERCIAL LICENSE 1.0.0 (with Commercial Addendum)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This software is made available under the Polyform Non-Commercial License 1.0.0
+(https://polyformproject.org/licenses/noncommercial/1.0.0/) with the following
+Commercial Addendum. Where the Addendum conflicts with the base license, the
+Addendum controls.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+PERMITTED (FREE) USES
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You may use, copy, modify, and run this software at no cost if ALL of the
+following are true:
+
+  1. You are a defense contractor, subcontractor, or small business running
+     the tool SOLELY for your own internal CMMC / NIST 800-171 readiness
+     assessment — i.e., assessing systems you own or operate.
+
+  2. You do NOT provide the output, reports, or any derivative work to an
+     external paying client as part of a commercial cybersecurity, consulting,
+     or managed-service engagement.
+
+  3. You retain all copyright notices, the ASCII banner, the HTML footer
+     attribution, and the SBOM tool-vendor metadata ("MSTechAlpine") in every
+     artifact this software produces.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROHIBITED (COMMERCIAL) USES — REQUIRES PAID LICENSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The following uses ARE commercial and require a separate written license from
+MSTechAlpine Ventures LLC:
+
+  a. Using this tool to generate CMMC evidence, reports, or SBOMs that are
+     delivered to a third-party (a client) as part of a paid or in-kind
+     cybersecurity consulting, C3PAO pre-assessment, audit readiness, or
+     managed-security-services engagement.
+
+  b. Bundling, repackaging, white-labeling, or reselling this software or its
+     output as part of a commercial product offering.
+
+  c. Running this tool on behalf of another company, even without charge, as
+     part of a business relationship that provides security services.
+
+  d. Incorporating this code into a Software-as-a-Service (SaaS) platform or
+     any platform that serves multiple external organizations.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+ATTRIBUTION REQUIREMENT (NON-NEGOTIABLE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Any permitted use — including internal use — must preserve the following in
+all generated artifacts:
+
+  • The "MSTechAlpine Fleet Commander" credit in all HTML reports.
+  • The "MSTechAlpine" vendor field in all CycloneDX / SPDX SBOM outputs.
+  • The copyright notice in all source files.
+
+Removing, altering, or obfuscating attribution — for any reason, including
+"white-labeling" for a client — is a breach of this license and voids the
+validity of the technical evidence produced.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMMERCIAL LICENSING
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+To obtain a commercial license for consulting firms, C3PAOs, MSSPs, or
+SaaS vendors, contact:
+
+  Jesse Edwards
+  MSTechAlpine Ventures LLC
+  commercial@mstechalpine.com
+
+Commercial licensees receive: white-label rights, priority support, a
+signed Memorandum of Understanding suitable for prime-contractor compliance
+disclosure, and indemnification terms.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+DISCLAIMER
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. IN NO EVENT SHALL MSTECHALPINE VENTURES LLC OR JESSE EDWARDS BE
+LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF
+THIS SOFTWARE. THIS SOFTWARE DOES NOT CONSTITUTE LEGAL ADVICE OR A
+COMPLIANCE CERTIFICATION. ALL READINESS SCORES ARE TECHNICAL SIGNALS ONLY.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+POLYFORM NON-COMMERCIAL LICENSE 1.0.0 BASE TEXT
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The full text of the Polyform Non-Commercial License 1.0.0 is available at:
+https://polyformproject.org/licenses/noncommercial/1.0.0/
+
+Where any provision of the Polyform Non-Commercial License 1.0.0 conflicts
+with the Commercial Addendum above, the Commercial Addendum controls.
+

@@ -1,0 +1,40 @@
+# -----------------------------------------------------------------------
+# MSTechAlpine Open — .gitignore
+# Rule of thumb: if there's any chance a file contains IPs, hostnames,
+# usernames, CUI-adjacent network topology, or internal strategy,
+# it goes here. When in doubt, exclude it.
+# -----------------------------------------------------------------------
+
+# Internal/private notes and strategy docs (never public)
+.internal/
+
+# Local Python environments
+.venv/
+program/.venv/
+
+# Python build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Generated diagnostic evidence artifacts
+# These files contain real IPs, hostnames, open ports, OS fingerprints,
+# usernames, SHA-256 ledger entries, and network topology — all sensitive.
+# Exclude contents but not the directory itself, so .gitkeep can be tracked.
+evidence/*
+!evidence/.gitkeep
+program/evidence/*
+!program/evidence/.gitkeep
+
+# macOS cruft
+.DS_Store
+**/.DS_Store
+
+# Editor state
+.vscode/settings.json
+*.swp
+*.swo
