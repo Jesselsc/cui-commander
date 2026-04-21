@@ -104,7 +104,7 @@ case "${choice}" in
       --json-output "${REPO_ROOT}/evidence/diagnostic.json"
     ;;
   2)
-    sudo fleet-commander \
+    sudo "${VENV_DIR}/bin/fleet-commander" \
       --discover-network auto \
       --auto-tag \
       --asset-tags "${REPO_ROOT}/evidence/asset-tags.json" \
@@ -125,7 +125,7 @@ case "${choice}" in
       echo "No input provided. Exit."
       exit 0
     fi
-    sudo fleet-commander \
+    sudo "${VENV_DIR}/bin/fleet-commander" \
       --discover-network "${target}" \
       --auto-tag \
       --asset-tags "${REPO_ROOT}/evidence/asset-tags.json" \

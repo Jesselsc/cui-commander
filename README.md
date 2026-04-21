@@ -212,84 +212,12 @@ But here is the architecture that holds it all together:
 
 The script checks actual system state (encryption, MFA, accounts, patch posture, drift) so you can catch issues before an assessor does.
 
-Detailed run instructions, scope, and what it can/cannot find now live here:
+Install, run, compliance warning detail, and evidence artifact output now live here:
 
 - [The MSTechAlpine Diagnostic Script](docs/the-mstechalpine-diagnostic-script.md)
-- [Fleet Commander CLI module](program/src/mstechalpine_fleet_commander/cli.py)
+- [Fleet Commander program README](program/README.md)
 
-> [!WARNING]
-> The script is a diagnostic tool, not an audit or certification. You can have a green script and still fail an audit if your policies and evidence are weak. If your script results are red, you are at risk.
-
-Run it locally with:
-
-```bash
-# Minimal run (localhost only)
-cd program && fleet-commander --json-output evidence/diagnostic.json
-
-# Full C3PAO evidence package
-sudo fleet-commander \
-  --discover-network auto \
-  --auto-tag \
-  --asset-tags evidence/asset-tags.json \
-  --discovery-output evidence/fleet-discovery.json \
-  --diagram-output evidence/network-architecture.svg \
-  --sbom-output evidence/sbom.json \
-  --srm evidence/srm.xlsx \
-  --vuln-scan \
-  --vuln-output evidence/vulns.json \
-  --html-output evidence/report.html \
-  --cloud-api \
-  --sanitize \
-  --json-output evidence/diagnostic-c3pao.json
-```
-
-The tool requires no third-party dependencies — pure Python 3.10+ stdlib. Evidence files are written to `evidence/` and permissions are locked to `0o600`.
-
-## ⚠️ CRITICAL: Readiness ≠ Compliance (False Claims Act Risk)
-
-**This section is non-negotiable. Read it before you affirm anything in SPRS.**
-
-The U.S. Department of Justice's Civil Cyber-Fraud Initiative has been aggressive since 2025. A "green" diagnostic script result is NOT proof of compliance.
-
-**What the script proves:** Your system has certain tools present (encryption tooling detected, MFA capable, patches available).
-
-**What the script does NOT prove:**
-- Controls are actually enforced or working
-- You have written policies documenting them
-- Evidence artifacts meet auditor standards
-- You are legally compliant with NIST 800-171 or CMMC
-
-**The Risk:** If you affirm a readiness score in SPRS without evidence to back it up, you are making a material misrepresentation to the federal government. That is False Claims Act exposure: criminal and civil liability, treble damages, and personal indemnification.
-
-**The Safe Path:**
-1. Run the script. Get a technical baseline.
-2. Build the **evidence package** (written SSP, policy enforcement logs, audit trails, control testing).
-3. **Before you affirm anything in SPRS**, have legal counsel and/or a C3PAO review your evidence package.
-4. Only after professional review should you submit a readiness score.
-
-**Bottom line:** Green script + weak evidence = fraud risk. Green script + strong evidence + professional review = defensible position.
-
-If your script is all green but you don't have the paperwork, you are not ready to affirm. Fix the paperwork first.
-
-## Evidence Artifacts Generated
-
-Fleet Commander writes a complete evidence package in a single run:
-
-| File | Description |
-|---|---|
-| `evidence/diagnostic-c3pao.json` | Full check results — machine readable, SHA-256 hash-chained ledger |
-| `evidence/report.html` | Human-readable HTML report — RED/YELLOW/GREEN findings, CMMC domain map, remediation steps |
-| `evidence/sbom.json` | CycloneDX 1.6 Software Bill of Materials |
-| `evidence/srm.xlsx` | Security Requirements Matrix — 110 NIST 800-171 Rev 2 controls pre-mapped to your scan results |
-| `evidence/fleet-discovery.json` | Network host inventory from active subnet scan |
-| `evidence/network-architecture.svg` | Auto-generated network topology diagram |
-| `evidence/asset-tags.json` | Hardware asset inventory (serial, TPM, OS, hostname) |
-| `evidence/vulns.json` | CVE cross-reference against installed packages via OSV.dev |
-| `evidence/hash-ledger.jsonl` | Append-only SHA-256 hash chain — tamper-evident audit trail |
-
-All files are written `0o600` (owner read/write only). The HTML report prints a `file://` URI on completion and can be opened directly in any browser.
-
-Ready for expert review? [Book a Tier 2 Validation](https://mstechalpine.com/contact). We will audit what you built and prioritize your next steps.
+Use the program README as the canonical install and run guide.
 
 ## 06. The C3PAO Audit: What Actually Happens
 

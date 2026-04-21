@@ -10,6 +10,7 @@ from __future__ import annotations
 import html
 import json
 import os
+import re
 from typing import Any, Dict, List, Optional
 
 from ._models import CheckResult
@@ -158,6 +159,22 @@ _REMEDIATION: Dict[str, str] = {
         "CA.L2-3.12.2 requires a current network diagram."
     ),
 }
+
+
+def get_remediation_guidance(check_name: str, plain_text: bool = False) -> Optional[str]:
+  """Return remediation guidance for a finding, optionally normalized for CLI/JSON use."""
+  guidance = _REMEDIATION.get(check_name)
+  if not guidance:
+    return None
+  if not plain_text:
+    return guidance
+
+  text = guidance.replace("<br>", "\n").replace("<br/>", "\n").replace("<br />", "\n")
+  text = text.replace("&bull;", "- ")
+  text = re.sub(r"<[^>]+>", "", text)
+  text = html.unescape(text)
+  text = re.sub(r"\n{3,}", "\n\n", text)
+  return text.strip()
 
 
 # ---------------------------------------------------------------------------

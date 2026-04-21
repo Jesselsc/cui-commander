@@ -60,7 +60,7 @@ from ._cloud_api import (
 from ._discovery import generate_network_diagram_svg, run_nmap_discovery
 from ._fleet import load_discovery_inventory, run_fleet_manager
 from ._models import CheckResult, _fix_sudo_ownership
-from ._report import write_html_report
+from ._report import get_remediation_guidance, write_html_report
 from ._utils import append_hash_ledger, detect_local_subnet, detect_os, load_asset_tags
 from ._vuln import check_vuln_signal
 
@@ -175,6 +175,14 @@ def main() -> int:
             "Intune device compliance, Google BeyondCorp). "
             "Requires az CLI / gcloud CLI to be installed and authenticated. "
             "Makes outbound HTTPS calls to cloud management APIs."
+        ),
+    )
+    parser.add_argument(
+        "--strict-exit-codes",
+        action="store_true",
+        help=(
+            "Return a non-zero exit code when red findings are present. "
+            "Recommended for CI pipelines and scripted gating, not interactive use."
         ),
     )
     args = parser.parse_args()
@@ -360,9 +368,30 @@ def main() -> int:
     print("  - Requires: written SSP, policy enforcement tests, auditor assessment.")
     print("  - Keep JSON output private; contains system details & usernames.")
     print("  - Script truth and executive affirmation must match. Documented red findings left unresolved are legal landmines in the current whistleblower era.")
+    print("  - By default, completed interactive runs return success even when red findings are present.")
+    print("  - Use --strict-exit-codes if you want non-zero exit codes for CI or scripted gating.")
 
     if summary["red"] > 0:
         print("\nWARNING: Red findings detected. Remediate before proceeding.")
+
+    remediation_items = []
+    for check in checks:
+        guidance = get_remediation_guidance(check.name, plain_text=True)
+        if guidance and check.status != "green":
+            remediation_items.append(
+                {
+                    "name": check.name,
+                    "status": check.status,
+                    "guidance": guidance,
+                }
+            )
+
+    if remediation_items:
+        print("\nRecommended remediation steps:")
+        for item in remediation_items:
+            print(f"- [{item['status'].upper()}] {item['name']}")
+            for line in item["guidance"].splitlines():
+                print(f"    {line}")
 
     payload = {
         "generated_at_utc": now,
@@ -371,6 +400,8 @@ def main() -> int:
         "summary": summary,
         "readiness_estimate_percent": score,
     }
+    if remediation_items:
+        payload["remediation"] = remediation_items
     if effective_target:
         payload["fleet_discovery"] = {
             "target": effective_target,
@@ -487,8 +518,16 @@ def main() -> int:
         )
         print(f"Fleet manifest: {os.path.abspath(os.path.join(args.fleet_output_dir, 'fleet-manifest.json'))}")
 
-    # Non-zero exit if critical red findings are present.
-    return 2 if summary["red"] > 0 else 0
+    if summary["red"] > 0:
+        print("Run completed. Red findings were detected and need remediation.")
+        if args.strict_exit_codes:
+            print("Strict mode enabled: returning a non-zero exit code for automation.")
+            return 2
+        print("Interactive mode: returning success so the report can be reviewed normally.")
+        return 0
+
+    print("Run completed. No red findings were detected.")
+    return 0
 
 
 if __name__ == "__main__":

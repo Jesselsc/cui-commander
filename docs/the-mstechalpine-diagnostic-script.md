@@ -87,7 +87,7 @@ pip install -e .
 3. Run the tool. For a full C3PAO evidence package:
 
 ```bash
-sudo fleet-commander \
+sudo .venv/bin/fleet-commander \
   --discover-network auto \
   --auto-tag \
   --asset-tags evidence/asset-tags.json \
@@ -102,6 +102,8 @@ sudo fleet-commander \
   --sanitize \
   --json-output evidence/diagnostic-c3pao.json
 ```
+
+Use the venv-installed executable for privileged runs. Plain `sudo fleet-commander` may bypass the virtualenv `PATH` and miss the install you just created.
 
 For a minimal local-only run (no nmap or graphviz needed):
 
@@ -120,7 +122,7 @@ In 2026, this output is also the technical fact base your senior official is aff
 ## What the Script Finds
 
 - **Encryption status**: Is the device actually encrypted and configured correctly? Is TPM properly bound? Is crypto on an active FIPS path?
-- **MFA enforcement quality**: Is MFA actually enforced on privileged paths, or just available? Are phishing-resistant methods (FIDO2, Windows Hello for Business) present?
+- **MFA signal quality**: Are phishing-resistant methods such as FIDO2 or Windows Hello for Business present, and do local signals suggest stronger MFA posture on privileged paths? Final enforcement still needs IdP, PAM, and policy verification.
 - **Account hygiene**: Are there stale admin accounts, weak account practices, departed employees still active, or likely shared/generic account names (for example: Shop_PC, Admin, User01)?
 - **Patch status**: Are critical systems lagging behind on updates?
 - **Configuration drift**: Are machines deviating from the intended baseline?
