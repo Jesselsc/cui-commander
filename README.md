@@ -87,7 +87,7 @@ If you leave your job site trailer unlocked, your tools get stolen. In the digit
 
 The U.S. Government is implementing CMMC because a single unsecured HVAC, electrical, fabrication, or roofing subcontractor can become the entry point for theft of bid specs, infrastructure maps, drawings, or personnel data. If you want to build for the [DoD](#quick-definitions), you have to lock your digital doors. It is good digital hygiene. Lock your door so hopefully the bad guy will go onto the next house that has the door open.
 
-Most contractors do not need mystery software on step 1. They need a clear build plan. I know its not your bread and butter, but we live in a digital world. Maybe if we get lucky you can ask that lawyer or doctor to rough frame your house one day, see how he likes it. At minimum you want to know whats going on so you are not a girl going to an auto mechanic.
+Most contractors do not need mystery software on step 1. They need a clear build plan. I know its not your bread and butter, but we live in a digital world. Maybe if we get lucky you can ask that lawyer or doctor to rough frame your house one day, see how he likes it. At minimum you want to know what's going on so you aren't the customer getting a $4,000 bill for a $40 part just because the mechanic saw you coming.
 
 Security for defense adjacent work is not just an IT product decision. It is an infrastructure decision, the same way you think about a job architecture blue print. If the architecture blue print is wrong, your building might fall. Okay hopefully you get it by now. 
 
